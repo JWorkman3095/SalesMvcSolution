@@ -6,17 +6,18 @@ using System.Linq;
 using System.Threading.Tasks;
 
 namespace SalesMvc.Models {
-    public class Order {
+    public class Orderline {
 
         public int Id { get; set; }
         [Required, StringLength(30)]
-        public string Desription { get; set; }
+        public string Product { get; set; }
+        public int Quantity { get; set; }
         [Column(TypeName = "decimal(11, 2)")]
-        public decimal Total { get; set; }
+        public decimal Price { get; set; }
+        [Column(TypeName = "decimal(11, 2)")]
+        public decimal LineTotal { get; set; }
 
-        public int CustomerId { get; set; }
-        public virtual Customer Customer { get; set; }
-
-        public virtual IEnumerable<Orderline> Orderlines { get; set; }
+        public int OrderId { get; set; }
+        public virtual Order Order { get; set; }
     }
 }
